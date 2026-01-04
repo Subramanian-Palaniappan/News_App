@@ -31,7 +31,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun OnBoardingScreen() {
+fun OnBoardingScreen(event: (OnBoardingEvent) -> Unit) {
     //Column contains whole onboarding content
     Column(
         modifier = Modifier
@@ -97,7 +97,7 @@ fun OnBoardingScreen() {
                     onClick = {
                         scope.launch {
                             if (pageState.currentPage == pages.lastIndex) {
-                                // TODO: Navigate to main screen
+                                event(OnBoardingEvent.SaveAppEntry)
                             } else {
                                 pageState.animateScrollToPage(pageState.currentPage + 1)
                             }
