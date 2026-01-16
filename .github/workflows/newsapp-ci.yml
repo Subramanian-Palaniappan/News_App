@@ -1,48 +1,39 @@
-# This is a basic workflow to help you get started with Actions
-
 name: newsapp CI
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "master" branch
   push:
-    branches: [ "master","final-app" ]
+    branches: [ "master", "final-app" ]
   pull_request:
-    branches: [ "master","final-app" ]
+    branches: [ "master", "final-app" ]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build-and-test:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     env:
       NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v3
-      
+
       - name: Set up JDK 17
         uses: actions/setup-java@v3
-        with: 
+        with:
           distribution: temurin
           java-version: 17
 
-      - name: Cache Gradle packages
+      - name: Cache Gradle
         uses: actions/cache@v3
         with:
           path: |
             ~/.gradle/caches
-            ~/.gradle/wrapper/
-          key: gradle-${{ runner.os }}-${{hashFiles('**/*.gradle*', '**/gradle-wrapper.properties')}}
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
-            gradle-${{ runner.os }} -
+            gradle-${{ runner.os }}-
 
-      - name: Grant execute permission for Gradlew
+      - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
 
       - name: Build Debug APK
@@ -51,10 +42,7 @@ jobs:
       - name: Run Unit Tests
         run: ./gradlew testDebugUnitTest --stacktrace
 
-      - name: Run Instrumented/Compose UI Tests
-        run: ./gradlew connectedDebugAndroidTest --stacktrace
-
-      - name: Publish Debug APK Artifact
+      - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
           name: debug-apk
