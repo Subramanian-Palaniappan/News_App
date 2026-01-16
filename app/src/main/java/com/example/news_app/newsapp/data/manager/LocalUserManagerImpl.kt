@@ -7,8 +7,8 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.news_app.newsapp.domain.manager.LocalUserManager
-import com.example.news_app.newsapp.util.Contants.APP_ENTRY
-import com.example.news_app.newsapp.util.Contants.USER_SETTINGS
+import com.example.news_app.newsapp.util.Constants.APP_ENTRY
+import com.example.news_app.newsapp.util.Constants.USER_SETTINGS
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

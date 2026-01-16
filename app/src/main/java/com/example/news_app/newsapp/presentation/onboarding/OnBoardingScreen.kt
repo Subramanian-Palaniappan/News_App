@@ -20,6 +20,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalInspectionMode
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.news_app.newsapp.presentation.common.NewsButton
 import com.example.news_app.newsapp.presentation.common.NewsTextButton
@@ -27,6 +29,7 @@ import com.example.news_app.newsapp.presentation.onboarding.Dimens.padding_30
 import com.example.news_app.newsapp.presentation.onboarding.Dimens.pageIndicatorWidth
 import com.example.news_app.newsapp.presentation.onboarding.components.OnBoardingPage
 import com.example.news_app.newsapp.presentation.onboarding.components.PageIndicator
+import com.example.news_app.newsapp.ui.News_AppTheme
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
