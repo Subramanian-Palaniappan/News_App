@@ -2,9 +2,9 @@ name: newsapp CI
 
 on:
   push:
-    branches: [ "final-app" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "final-app" ]
+    branches: [ "master" ]
 
 jobs:
   build-and-test:
