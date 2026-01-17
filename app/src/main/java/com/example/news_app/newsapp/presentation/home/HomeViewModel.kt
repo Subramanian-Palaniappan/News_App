@@ -14,6 +14,7 @@ import java.time.format.DateTimeFormatter
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val useCases: NewsUseCases) : ViewModel() {
+
     val news = useCases.getNews(sources = listOf("bbc-news", "abc-news")).cachedIn(viewModelScope)
 
 }

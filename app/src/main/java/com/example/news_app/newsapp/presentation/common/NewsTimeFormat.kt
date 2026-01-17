@@ -29,7 +29,10 @@ fun String.timeAgo(): String {
             duration.toMinutes() < 1 -> "Just now"
             duration.toMinutes() < 60 -> "${duration.toMinutes()} min ago"
             duration.toHours() < 24 -> "${duration.toHours()} hr ago"
-            duration.toDays() < 7 -> "${duration.toDays()} days ago"
+            duration.toDays() < 7 -> {
+            val days = duration.toDays()
+            if (days == 1L) "1 day ago" else "$days days ago"
+        }
             else -> this.toLocalTimeString("dd MMM yyyy") // older than a week
         }
     } catch (e: Exception) {
