@@ -10,7 +10,35 @@
 A simple, modern **Android News App** built with a strong focus on **clean code, scalability, and real-world best practices**. This project reflects how a production-ready Android app is structured, tested, and automated using today’s recommended tools.
 
 ---
+## 📸 Screenshots
+<table align="center">
+  <tr>
+    <th>Home Screen</th>
+    <th>Search Screen</th>
+    <th>Details Screen</th>
+    <th>Bookmark Screen</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="screenshots/home_screen_light.png" width="180"/><br/>
+      <img src="screenshots/home_screen_dark.png" width="180"/>
+    </td>
+    <td align="center">
+      <img src="screenshots/search_screen.png" width="180"/><br/>
+      <img src="screenshots/search_screen_dark.png" width="180"/>
+    </td>
+    <td align="center">
+      <img src="screenshots/details_screen.png" width="180"/><br/>
+      <img src="screenshots/details_screen_dark.png" width="180"/>
+    </td>
+    <td align="center">
+      <img src="screenshots/bookmark_screen.png" width="180"/><br/>
+      <img src="screenshots/bookmark_screen_dark.png" width="180"/>
+    </td>
+  </tr>
+</table>
 
+---
 ## 📱 App Overview
 
 This app allows users to browse the latest news from a remote API and **bookmark articles** they want to read later. It is designed to be easy to maintain and extend, making it a good example of how Clean Architecture works in a real Android project.
