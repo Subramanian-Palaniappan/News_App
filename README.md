@@ -1,169 +1,169 @@
-🗞️ News App (Android)
+# 🗞️ News App (Android)
 
-A simple, modern Android News App built with a strong focus on clean code, scalability, and real-world best practices. This project reflects how a production-ready Android app is structured, tested, and automated using today’s recommended tools.
+![CI](https://github.com/Subramanian-Palaniappan/News_App/actions/workflows/newsapp-ci.yml/badge.svg)
+![Kotlin](https://img.shields.io/badge/Kotlin-2.0.0-blueviolet)
+![AGP](https://img.shields.io/badge/AGP-8.7.0--alpha-orange)
+![Android](https://img.shields.io/badge/CompileSdk-35-green)
+![Compose](https://img.shields.io/badge/Jetpack%20Compose-Material3-blue)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
-📱 App Overview
+A simple, modern **Android News App** built with a strong focus on **clean code, scalability, and real-world best practices**. This project reflects how a production-ready Android app is structured, tested, and automated using today’s recommended tools.
 
-This app allows users to browse the latest news from a remote API and bookmark articles they want to read later. It is designed to be easy to maintain and extend, making it a good example of how Clean Architecture works in a real Android project.
+---
+
+## 📱 App Overview
+
+This app allows users to browse the latest news from a remote API and **bookmark articles** they want to read later. It is designed to be easy to maintain and extend, making it a good example of how Clean Architecture works in a real Android project.
 
 The main goals of this project are:
 
-Clear separation of responsibilities
+* Clear separation of responsibilities
+* High test coverage
+* Secure handling of API keys
+* Reliable CI automation
 
-High test coverage
+---
 
-Secure handling of API keys
+## 🏗️ Architecture
 
-Reliable CI automation
+The app follows **Clean Architecture**, which helps keep the codebase easy to understand, test, and scale over time. Each layer has a clear responsibility and does not depend directly on framework details.
 
-🏗️ Architecture
+**Hilt** is used for dependency injection to manage object creation and wiring in a clean and test-friendly way.
 
-The app follows Clean Architecture, which helps keep the codebase easy to understand, test, and scale over time. Each layer has a clear responsibility and does not depend directly on framework details.
+### Layers
 
-Hilt is used for dependency injection to manage object creation and wiring in a clean and test-friendly way.
+* **Presentation Layer**
 
-Layers
+  * Jetpack Compose UI
+  * ViewModels that expose UI state
+  * Handles user interactions and screen logic
 
-Presentation Layer
+* **Domain Layer**
 
-Jetpack Compose UI
+  * UseCases that contain business logic
+  * Repository interfaces
+  * Completely framework-independent
 
-ViewModels that expose UI state
+* **Data Layer**
 
-Handles user interactions and screen logic
+  * Repository implementations
+  * Remote API integration using Retrofit
+  * Local storage using Room for bookmarked news
 
-Domain Layer
+---
 
-UseCases that contain business logic
+## 🧩 Tech Stack
 
-Repository interfaces
+> **Built using modern Android development tools and best practices**
 
-Completely framework-independent
+* **Language:** Kotlin
 
-Data Layer
+* **UI:** Jetpack Compose
 
-Repository implementations
+* **Architecture:** Clean Architecture + MVVM
 
-Remote API integration using Retrofit
+* **Dependency Injection:** Hilt
 
-Local storage using Room for bookmarked news
+* **Networking:** Retrofit
 
-🧩 Tech Stack
+* **Local Storage:** Room Database (for bookmarked news)
 
-Language: Kotlin
+* **Asynchronous:** Kotlin Coroutines
 
-UI: Jetpack Compose
+* **Testing:**
 
-Architecture: Clean Architecture + MVVM
+  * JUnit
+  * MockK
+  * Compose UI Testing
 
-Dependency Injection: Hilt
+* **CI/CD:** GitHub Actions
 
-Networking: Retrofit
+* **Language:** Kotlin
 
-Local Storage: Room Database (for bookmarked news)
+* **UI:** Jetpack Compose
 
-Asynchronous: Kotlin Coroutines
+* **Architecture:** Clean Architecture + MVVM
 
-Testing:
+* **Dependency Injection:** Hilt (Dagger)
 
-JUnit
+  * Used across Data, Domain, and Presentation layers
+  * ViewModels injected using `@HiltViewModel`
+  * Application and Composables annotated with `@HiltAndroidApp` / `@AndroidEntryPoint`
 
-MockK
+* **Networking:** Retrofit
 
-Compose UI Testing
+* **Local Storage:** Room Database (Bookmarks)
 
-CI/CD: GitHub Actions
+* **Asynchronous:** Kotlin Coroutines
 
-Language: Kotlin
+* **Testing:**
 
-UI: Jetpack Compose
+  * JUnit
+  * MockK
+  * Compose UI Testing
 
-Architecture: Clean Architecture + MVVM
+* **CI/CD:** GitHub Actions
 
-Dependency Injection: Hilt (Dagger)
+---
 
-Used across Data, Domain, and Presentation layers
+## 🧪 Testing Strategy
 
-ViewModels injected using @HiltViewModel
-
-Application and Composables annotated with @HiltAndroidApp / @AndroidEntryPoint
-
-Networking: Retrofit
-
-Local Storage: Room Database (Bookmarks)
-
-Asynchronous: Kotlin Coroutines
-
-Testing:
-
-JUnit
-
-MockK
-
-Compose UI Testing
-
-CI/CD: GitHub Actions
-
-🧪 Testing Strategy
+> 🧠 *High confidence through automated testing at every layer*
 
 Testing is treated as a first-class citizen in this project. The goal is to ensure confidence while refactoring and adding new features.
 
-Unit Tests
+### Unit Tests
 
-Repository tests with mocked API responses using MockK
+* Repository tests with mocked API responses using MockK
+* UseCase tests to verify business logic
+* ViewModel tests to validate UI state changes
+* Room-related tests for bookmarked news using in-memory databases
 
-UseCase tests to verify business logic
+### UI Tests
 
-ViewModel tests to validate UI state changes
-
-Room-related tests for bookmarked news using in-memory databases
-
-UI Tests
-
-Jetpack Compose UI tests for major screens
-
-Validation of user interactions and visible UI states
+* Jetpack Compose UI tests for major screens
+* Validation of user interactions and visible UI states
 
 All tests are executed automatically as part of the CI pipeline.
 
-🔐 API Key Security
+---
 
-The News API Key is not hardcoded
+## 🔐 API Key Security
 
-Stored securely using GitHub Secrets
+* The **News API Key** is **not hardcoded**
+* Stored securely using **GitHub Secrets**
+* Injected into the build process during CI execution
 
-Injected into the build process during CI execution
+---
 
-🚀 CI/CD Pipeline (GitHub Actions)
+## 🚀 CI/CD Pipeline (GitHub Actions)
+
+> 🤖 *Every push and pull request is automatically built and tested*
 
 A GitHub Actions CI pipeline is set up to make sure every change is safe and buildable.
 
 The pipeline runs on:
 
-Push to master
+* Push to `master`
+* Pull requests targeting `master`
 
-Pull requests targeting master
+### What the pipeline does
 
-What the pipeline does
+1. Checks out the source code
+2. Sets up **JDK 17**
+3. Installs the **Android SDK** and **SDK Platform 35**
+4. Caches Gradle dependencies to speed up builds
+5. Builds the Debug APK
+6. Runs unit and UI tests
+7. Uploads the generated APK as a GitHub Actions artifact
 
-Checks out the source code
+The **News API key** is stored securely in **GitHub Secrets** and injected during the build, keeping sensitive data out of the codebase.
 
-Sets up JDK 17
+---
 
-Installs the Android SDK and SDK Platform 35
+## 📦 Build Output
 
-Caches Gradle dependencies to speed up builds
+* Debug APK is generated during CI
+* APK is uploaded as a **GitHub Actions Artifact** for easy download and testing
 
-Builds the Debug APK
-
-Runs unit and UI tests
-
-Uploads the generated APK as a GitHub Actions artifact
-
-The News API key is stored securely in GitHub Secrets and injected during the build, keeping sensitive data out of the codebase.
-
-📦 Build Output
-
-Debug APK is generated during CI
-
-APK is uploaded as a GitHub Actions Artifact for easy download and testing
+---
