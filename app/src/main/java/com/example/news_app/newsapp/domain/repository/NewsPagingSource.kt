@@ -1,7 +1,9 @@
 package com.example.news_app.newsapp.domain.repository
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.example.news_app.BuildConfig
 import com.example.news_app.newsapp.data.remote.dto.NewsApi
 import com.example.news_app.newsapp.domain.model.Article
 
@@ -18,6 +20,7 @@ class NewsPagingSource(private val newsApi: NewsApi, private val source: String)
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Article> {
         val page = params.key ?: 1
+        Log.d("API_KEY", BuildConfig.NEWS_API_KEY)
         return try {
             val newsResponse = newsApi.getNews(source = source, page = page)
             totalNewsCount += newsResponse.articles.size
